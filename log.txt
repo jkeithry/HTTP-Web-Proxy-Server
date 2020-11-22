@@ -1,0 +1,152 @@
+C:\Users\Jeffr\Google Drive\Documents\School Docs\Ryerson Course Work\2020\Fall\CCPS706\Project>python ProxyServer.py 127.0.01
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62615)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+Traceback (most recent call last):
+  File "ProxyServer.py", line 44, in <module>
+    f = open(filetouse[1:], "r")
+FileNotFoundError: [Errno 2] No such file or directory: 'www.google.ca'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "ProxyServer.py", line 67, in <module>
+    c = socket(socket.AF_INET, socket.SOCK_STREAM)
+AttributeError: type object 'socket' has no attribute 'AF_INET'
+
+C:\Users\Jeffr\Google Drive\Documents\School Docs\Ryerson Course Work\2020\Fall\CCPS706\Project>python ProxyServer.py 127.0.01
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62638)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+google.ca
+Illegal request
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62640)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+google.ca
+Illegal request
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62645)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+google.ca
+Illegal request
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62647)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+google.ca
+Illegal request
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62652)
+GET /www.google.ca HTTP/1.1
+Host: localhost:57451
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+
+/www.google.ca
+www.google.ca
+/www.google.ca
+google.ca
+Illegal request
+Ready to serve...
+Received a connection from: ('127.0.0.1', 62654)
+
+Traceback (most recent call last):
+  File "ProxyServer.py", line 35, in <module>
+    print(message.split()[1])
+IndexError: list index out of range
+
+C:\Users\Jeffr\Google Drive\Documents\School Docs\Ryerson Course Work\2020\Fall\CCPS706\Project>
