@@ -14,10 +14,9 @@ tcpSerSock = socket(AF_INET, SOCK_STREAM)
 # Fill in start.
 recv_buffer = 4096
 TCP_IP = '127.0.0.1'
-TCP_PORT = 57451
+TCP_PORT = 8888
 tcpSerSock.bind((TCP_IP, TCP_PORT))
 tcpSerSock.listen(2)
-
 
 # Fill in end.
 
@@ -50,7 +49,6 @@ while 1:
         tcpCliSock.send("Content-Type:text/html\r\n")
 
         # Fill in start.
-        ##############################################
         for i in range(0, len(output_data)):
             tcpCliSock.send(output_data[i].encode())
         tcpCliSock.send("\r\n".encode())
@@ -81,7 +79,10 @@ while 1:
 
                 # Read the response into buffer
                 # Fill in start.
-                ##########################################
+                with open(fileobj, 'r') as f:
+                    file_content = f.read()
+                print(file_content)
+
                 # Fill in end.
 
                 # Create a new file in the cache for the requested file.
@@ -93,13 +94,21 @@ while 1:
                 ######################################
                 # Fill in end.
 
-            except Exception:
+            except IOError:
                 print("Illegal request")
                 tcpCliSock.close()
         else:
             # HTTP response message for file not found
             # Fill in start.
-            pass##################################################################
+            header = 'HTTP/1.1 404 Not Found\n\n'.encode()
+            response = '<html>' \
+                       '    <h1>' \
+                       '        Error   ' \
+                       '        404: File' \
+                       '        not found  ' \
+                       '     </h1>' \
+                       '</html>'.encode()
+            tcpCliSock.send(header + response)
             # Fill in end.
             # Close the client and the server sockets
 
