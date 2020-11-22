@@ -27,7 +27,7 @@ while 1:
     tcpCliSock, addr = tcpSerSock.accept()
     print('Received a connection from:', addr)
 
-    message = tcpCliSock.recv(recv_buffer).decode() # Fill in start. # Fill in end.
+    message = tcpCliSock.recv(recv_buffer)# Fill in start. # Fill in end.
     print(message)
 
     # Extract the filename from the given message
@@ -45,14 +45,14 @@ while 1:
         fileExist = "true"
 
         # ProxyServer finds a cache hit and generates a response message
-        tcpCliSock.send("HTTP/1.0 200 OK\r\n")
+        tcpCliSock.send("HTTP/1.1 200 OK\r\n")
         tcpCliSock.send("Content-Type:text/html\r\n")
 
         # Fill in start.
-        for i in range(0, len(output_data)):
-            tcpCliSock.send(output_data[i].encode())
-        tcpCliSock.send("\r\n".encode())
-        tcpCliSock.close()
+        for i in range(0, len(outputdata)):
+            tcpCliSock.send(outputdata[i])
+
+
         # Fill in end.
 
         print('Read from cache')
@@ -64,7 +64,7 @@ while 1:
             # Create a socket on the proxyserver
             c = socket(AF_INET, SOCK_STREAM)
             hostn = filename.replace("www.","",1)
-            print(hostn)
+            print("hostname: ", hostn)
 
             try:
                 # Connect to the socket to port 80
@@ -75,13 +75,11 @@ while 1:
                 # Create a temporary file on this socket and ask port 80
                 # for the file requested by the client
                 fileobj = c.makefile('r', 0)
-                fileobj.write("GET "+"http://" + filename + "HTTP/1.0\n\n")
+                fileobj.write("GET "+"http://" + filename + "HTTP/1.1\n\n")
 
                 # Read the response into buffer
                 # Fill in start.
-                with open(fileobj, 'r') as f:
-                    file_content = f.read()
-                print(file_content)
+                buff = fileobj.readlines()
 
                 # Fill in end.
 
@@ -91,12 +89,13 @@ while 1:
 
                 tmpFile = open("./" + filename,"wb")
                 # Fill in start.
-                ######################################
+                for i in range(0, len(buff)):
+                    tmpFile.write(buff[i])
+                    tcpCliSock.send(buff[i].encode())
                 # Fill in end.
 
             except IOError:
                 print("Illegal request")
-                tcpCliSock.close()
         else:
             # HTTP response message for file not found
             # Fill in start.
