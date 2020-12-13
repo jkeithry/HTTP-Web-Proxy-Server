@@ -1,5 +1,7 @@
 #!python2
+#http://localhost:8888/www.ryerson.ca/
 import socket
+import sys
 if len(sys.argv) <= 1:
 
     print('Usage : "python ProxyServer.py server_ip"\n[server_ip : It is the IP Address Of Proxy Server')
@@ -11,17 +13,16 @@ tcpSerSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Fill in start.
 recv_buffer = 4096
-TCP_IP = '127.0.0.1'
+TCP_IP = sys.argv[1]
 TCP_PORT = 8888
 tcpSerSock.bind((TCP_IP, TCP_PORT))
 tcpSerSock.listen(2)
+print("Listening on port: ", TCP_PORT )
 
 # Fill in end.
 
 
 while 1:
-
-
     # Strat receiving data from the client
     print('Ready to serve...')
     tcpCliSock, addr = tcpSerSock.accept()
@@ -46,13 +47,11 @@ while 1:
         fileExist = "true"
 
         # ProxyServer finds a cache hit and generates a response message
-        tcpCliSock.send("HTTP/1.1 200 OK\r\n".encode())
+        tcpCliSock.send("HTTP/1.0 200 OK\r\n".encode())
         tcpCliSock.send("Content-Type:text/html\r\n".encode())
 
         # Fill in start.
-
         tcpCliSock.send(outputdata)
-
         # Fill in end.
         f.close()
         print('Read from cache')
@@ -62,9 +61,7 @@ while 1:
         if fileExist == "false":
 
             # Create a socket on the proxyserver
-
             c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
             hostname = filename.replace("www.","",1)
             try:
                 # Connect to the socket to port 80
@@ -89,13 +86,10 @@ while 1:
                 # and the corresponding file in the cache
                 tmpFile = open("./" + filename,"wb")
                 tmpFile.write(buff)
-                tcpCliSock.send("HTTP/1.1 200 OK\r\n".encode())
+                tcpCliSock.send("HTTP/1.0 200 OK\r\n".encode())
                 tcpCliSock.send("Content-Type:text/html\r\n".encode())
                 for i in range(0, len(buff)):
                     tcpCliSock.send(buff)
-
-
-
                 # Fill in end.
                 print('sent to client')
 
@@ -104,7 +98,7 @@ while 1:
         else:
             # HTTP response message for file not found
             # Fill in start.
-            header = 'HTTP/1.1 404 Not Found\n\n'
+            header = 'HTTP/1.0 404 Not Found\n\n'
             response = '<html>' \
                        '    <h1>' \
                        '        Error   ' \
